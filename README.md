@@ -4,17 +4,17 @@ Tema projekta je implementacija asinhronog one-step Q-learning algoritma. One-st
 U okviru predložene implementacije kao model je izabrana konvolutivna neuronska mreža, trenirana različitim Q-vrednostima. Ulaz u mrežu predstavljaju "sirovi" pikseli, a izlaz vrednost funkcije koja ocenjuje buduće nagrade. Algoritam je testiran na nekoliko Atari 2600 igrica korišćenjem OpenAI Gym biblioteke. U okviru direktorijuma *results* nalaze se postignuti rezultati. Pored rezultata koje je postigao implementirani algoritam nalazi se i rezultati koje su postigli konceptualno slični algoritmi iz drugih radova.
 
 Da bi se program uspešno pokrenuo neophodno je imati instalirano:
-	*Python 3.6
-	*Tensorflow (samo verzija za CPU)
-	*Keras	
-	*Skimage
-	*Numpy
-	*OpenAI Gym (posle instalacije dodati `pip install gym[atari]`)
+*Python 3.6
+*Tensorflow (samo verzija za CPU)
+*Keras	
+*Skimage
+*Numpy
+*OpenAI Gym (posle instalacije dodati `pip install gym[atari]`)
  
-Referentni rad koji je praćen tokom izrade nalazi se na adresi: 
+Referentni rad koji je praćen tokom izrade nalazi se na adresi: <br/>
 [link](https://arxiv.org/pdf/1602.01783v1.pdf "Asinhroni reinforcement learning")
 
-Radovi iz kojih su uzeti rezultati nalaze se na adresama:
-[link](http://www.cl.cam.ac.uk/~ey204/teaching/ACS/R244_2017_2018/papers/mnih_nips_2013.pdf "Prvi rad iz koga su uzeti rezultati")
-[link](https://arxiv.org/pdf/1602.01783.pdf "Drugi rad iz koga su uzeti rezultati")
+Radovi iz kojih su uzeti rezultati nalaze se na adresama: <br/>
+[link](http://www.cl.cam.ac.uk/~ey204/teaching/ACS/R244_2017_2018/papers/mnih_nips_2013.pdf "Prvi rad iz koga su uzeti rezultati") <br/>
+[link](https://arxiv.org/pdf/1602.01783.pdf "Drugi rad iz koga su uzeti rezultati") <br/>
 [link](https://www.nature.com/articles/nature14236 "Treci rad iz koga su uzeti rezultati")
