@@ -31,6 +31,32 @@ csv_file_directory_time = CHECKPOINT_DIRECTORY + "/thread_data/thread_info_" + s
 thread_directory = CHECKPOINT_DIRECTORY +  '/thread_data' 
 
 
+# Cuvanje kopije modela radi kasnijeg istrazivanja
+def backup_save_checkpoints(current_frame):
+    backup_file_directory = CHECKPOINT_DIRECTORY + '/backup-' + str(current_frame)
+    if not os.path.exists(backup_file_directory):
+        os.makedirs(backup_file_directory)
+
+    checkpoint_files = os.listdir(CHECKPOINT_DIRECTORY)
+    for file_name in checkpoint_files:
+        full_file_name = os.path.join(CHECKPOINT_DIRECTORY, file_name)
+        if (os.path.isfile(full_file_name)):
+            shutil.copy(full_file_name, backup_file_directory)
+
+
+def print_time_pretty(seconds):
+    seconds = int(seconds)
+    minutes, seconds = divmod(seconds, 60)
+    hours, minutes = divmod(minutes, 60)
+    return str(hours) + ":" + str(minutes) + ":" + str(seconds)
+
+
+def write_in_csv(backup_id, global_time, thread_time, epsilon, reward, q_max):
+    with open(csv_file_directory, 'a') as csvfile:
+        writer=csv.writer(csvfile)
+        writer.writerow([backup_id, global_time, thread_time, epsilon, reward, q_max])
+
+
 def choice_epsilon_limit():
     choice = np.random.rand()
     if choice < 0.4:
@@ -59,32 +85,6 @@ def update_epsilon(epsilon, epsilon_limit):
         epsilon_reduce = (1 - epsilon_limit) / EPSILON_SCALE_ITERATION
     
     return epsilon-epsilon_reduce 
-
-
-# Cuvanje kopije modela radi kasnijeg istrazivanja
-def backup_save_checkpoints(current_frame):
-    backup_file_directory = CHECKPOINT_DIRECTORY + '/backup-' + str(current_frame)
-    if not os.path.exists(backup_file_directory):
-        os.makedirs(backup_file_directory)
-
-    checkpoint_files = os.listdir(CHECKPOINT_DIRECTORY)
-    for file_name in checkpoint_files:
-        full_file_name = os.path.join(CHECKPOINT_DIRECTORY, file_name)
-        if (os.path.isfile(full_file_name)):
-            shutil.copy(full_file_name, backup_file_directory)
-
-
-def print_time_pretty(seconds):
-    seconds = int(seconds)
-    minutes, seconds = divmod(seconds, 60)
-    hours, minutes = divmod(minutes, 60)
-    return str(hours) + ":" + str(minutes) + ":" + str(seconds)
-
-
-def write_in_csv(backup_id, global_time, thread_time, epsilon, reward, q_max):
-    with open(csv_file_directory, 'a') as csvfile:
-        writer=csv.writer(csvfile)
-        writer.writerow([backup_id, global_time, thread_time, epsilon, reward, q_max])
 
 
 def train_thread(thread_id, env, action_size, session, saver, cnn_graph, optimizer_graph):
