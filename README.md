@@ -6,7 +6,7 @@ U okviru predložene implementacije kao model je izabrana konvolutivna neuronska
 
 Da bi se program uspešno pokrenuo neophodno je imati instalirano:
 * Python 3.6
-* Tensorflow (samo verzija za CPU)
+* Tensorflow 1.8.0 (samo verzija za CPU)
 * Keras	
 * Skimage
 * Numpy
